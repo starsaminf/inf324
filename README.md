@@ -14,6 +14,8 @@ Realice lo siguiente:
 ![](./imgs/pregunta1/5.png)
 
 2. Genere una pantalla con templates (CSS y ASP.NET) debidamente maquetado de acceso a la facultad y al menos tres carreras (de los templates existentes en la web)
+![](./imgs/pregunta2/1.png)
+![](./imgs/pregunta2/2.png)
 
 3. Genere una pantalla de acceso (CSS y PHP) con la base de datos, controlando en las demás pantallas mediante sesiones.
 
