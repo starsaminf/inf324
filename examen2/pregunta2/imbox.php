@@ -1,10 +1,10 @@
 <?php
 session_start();
-
 include "conexion.inc.php";
+
 $sql = "SELECT * FROM flujousuario ";
 $sql .= "WHERE usuario='" . $_SESSION["usuario"] . "' ";
-$sql .= "AND fechafin IS NULL ";
+$sql .= "AND fechafin IS NULL";
 $resultado = mysqli_query($con, $sql);
 ?>
 <html>
@@ -15,13 +15,13 @@ $resultado = mysqli_query($con, $sql);
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
 		<a class="navbar-brand" href="#">Mi Aplicación</a>
 		<div class="ml-auto">
-			<a href="cerrar.php" class="btn btn-link">Cerrar sesión</a>
+			<a href="logout.php" class="btn btn-link">Cerrar sesión</a>
 		</div>
 	</nav>
 
 	<div class="container mt-3">
 		<div class="d-flex justify-content-start">
-			<a href="nuevoflujo.php" class="btn btn-primary mr-2">Nuevo</a>
+			<a href="iniciar_flujo.php" class="btn btn-primary mr-2">Iniciar proceso</a>
 			<a href="bandejaS.php" class="btn btn-primary">Ver bandeja de salida</a>
 		</div>
 

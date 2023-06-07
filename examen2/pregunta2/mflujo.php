@@ -2,14 +2,14 @@
 session_start();
 
 include "conexion.inc.php";
-$flujo=$_GET["flujo"];
-$proceso=$_GET["proceso"];
+$flujo = $_GET["flujo"];
+$proceso = $_GET["proceso"];
  
-$sql="SELECT * FROM flujo ";
-$sql.="WHERE flujo='$flujo' and proceso='$proceso'";
-$resultado=mysqli_query($con,$sql);
-$registros=mysqli_fetch_array($resultado);
-$pantalla=$registros["pantalla"];
+$sql = "SELECT * FROM flujo ";
+$sql .= "WHERE flujo='$flujo' and proceso = '$proceso'";
+$resultado = mysqli_query($con,$sql);
+$registros = mysqli_fetch_array($resultado);
+$pantalla = $registros["pantalla"];
 ?>
 <html>
 <head>
@@ -23,8 +23,10 @@ $pantalla=$registros["pantalla"];
 		<input type="hidden" name="pantalla" value="<?php echo $pantalla; ?>">
 		<input type="hidden" name="flujo" value="<?php echo $flujo; ?>">
 		<input type="hidden" name="proceso" value="<?php echo $proceso; ?>">
-		<input type="submit" value="Anterior" name="Anterior">
-		<input type="submit" value="Siguiente" name="Siguiente">
+		<div class="container mt-5">
+			<input type="submit" value="Anterior" name="Anterior">
+			<input type="submit" value="Siguiente" name="Siguiente">
+		</div>
 	</form>
 </body>
 </html>

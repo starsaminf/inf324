@@ -1,12 +1,11 @@
-<?php
-session_start();
-
-include "conexion.inc.php";
-$sql = "SELECT * FROM flujousuario ";
-$sql .= "WHERE usuario='" . $_SESSION["usuario"] . "' ";
-$sql .= "AND fechafin is not null ";
-$resultado = mysqli_query($con, $sql);
+<?php 
+	include "conexion.inc.php";
+	$sql = "SELECT paralelo.*
+	FROM academica2.paralelo paralelo 
+	INNER JOIN academica2.materia ON materia.codMateria = paralelo.codMateria;";
+	$resultado = mysqli_query($con, $sql);
 ?>
+
 <html>
 <head>
 	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
@@ -15,34 +14,30 @@ $resultado = mysqli_query($con, $sql);
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
 		<a class="navbar-brand" href="#">Mi Aplicación</a>
 		<div class="ml-auto">
-			<a href="cerrar.php" class="btn btn-link">Cerrar sesión</a>
+			<a href="logout.php" class="btn btn-link">Cerrar sesión</a>
 		</div>
 	</nav>
 
 	<div class="container mt-3">
-		<div class="d-flex justify-content-start">
-			<a href="bandejaE.php" class="btn btn-primary mr-2">Volver</a>
-		</div>
-
 		<table class="table mt-3">
 			<thead>
 				<tr>
-					<th>Flujo</th>
-					<th>Proceso</th>
-					<th>Fecha inicio</th>
-					<th>Fecha fin</th>
+					<th>codMateria</th>
+					<th>Paralelo</th>
+					<th>Horario</th>
+					<th>Inscripción</th>
 				</tr>
 			</thead>
 			<tbody>
 			<?php
 				while ($registros = mysqli_fetch_array($resultado)) {
 					echo "<tr>";
-					echo "<td>" . $registros["flujo"] . "</td>";
-					echo "<td>" . $registros["proceso"] . "</td>";
-					echo "<td>" . $registros["fechainicio"] . "</td>";
-					echo "<td>" . $registros["fechafin"] . "</td>";
+					echo "<td>" . $registros["codMateria"] . "</td>";
+					echo "<td>" . $registros["Paralelo"] . "</td>";
+					echo "<td>" . $registros["horario"] . "</td>";
+					echo "<td><input type='checkbox' name='materia[]' value='" . $registros["codMateria"] . "-" . $registros["Paralelo"] . "'></td>";
 					echo "</tr>";
-				}
+				}			
 			?>
 			</tbody>
 		</table>
@@ -52,3 +47,5 @@ $resultado = mysqli_query($con, $sql);
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </body>
 </html>
+
+

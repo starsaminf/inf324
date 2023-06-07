@@ -1,6 +1,6 @@
 <?php 
-$usuario=$_GET["usuario"];
-$password=$_GET["password"];
+$usuario = $_GET["usuario"];
+$password = $_GET["password"];
 
 session_start();
 
@@ -14,11 +14,10 @@ $contador=$registros["contador"];
 
 if (($contador>0) && ($password=='123456'))
 {
-	header("Location: bandejaE.php");
 	$_SESSION["usuario"] = $usuario;
 	$_SESSION["rol"] = $registros["rol"];
+	header("Location: imbox.php");
 } 
 else {
 	header("Location: index.php");
 }
-?>
